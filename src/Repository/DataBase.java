@@ -25,7 +25,7 @@ public class DataBase {
     public static boolean saveUser(Connection conn, String nom, String mot_passe) {
         boolean isUserExist;
         try {
-            String query = "INSERT INTO PERSONNE (nom, Motdepasse) VALUES (?, ?)";
+            String query = "INSERT INTO PERSONNE (nom,Motdepasse) VALUES (?, ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, nom);
             preparedStatement.setString(2, mot_passe);
