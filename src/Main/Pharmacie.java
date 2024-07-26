@@ -28,6 +28,8 @@ public class Pharmacie {
         String nom = scanner.next();
         System.out.print("Entrez le type du médicament: ");
         String type = scanner.next();
+        System.out.println(" EntreZ le Prix  du medicament :");
+        String Prix = scanner.next();
         Medicament medicament = new Medicament(id, nom, type);
         try {
             String query = "INSERT INTO medicament (id, nom, type_m) VALUES (?, ?, ?)";
@@ -35,6 +37,7 @@ public class Pharmacie {
             preparedStatement.setString(1, medicament.getId());
             preparedStatement.setString(2, medicament.getNom());
             preparedStatement.setString(3, medicament.getType());
+            //preparedStatement.setString(4,medicament.get );
             preparedStatement.executeUpdate();
             System.out.println("Médicament ajouté avec succès");
         } catch (SQLException e) {
