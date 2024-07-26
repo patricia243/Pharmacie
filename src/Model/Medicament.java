@@ -1,17 +1,20 @@
 package Model;
 
 public class Medicament {
-    private final String id;
-    private final String nom;
+    private  final String id;
+    private  final String nom;
     private final String type;
+    private  final String prix;
 
-    public Medicament(String id, String nom, String type) {
+    public Medicament(String id, String nom, String type, String prix) {
         this.id = id;
         this.nom = nom;
         this.type = type;
+        this.prix = prix;
     }
 
-    public String  getId() {
+    // Getters
+    public String getId() {
         return id;
     }
 
@@ -22,8 +25,8 @@ public class Medicament {
     public String getType() {
         return type;
     }
-    @Override
-    public String toString() {
-        return "ID: " + id + ", Nom: " + nom + ", Type: " + type;
+
+    public String getPrix() {
+        return prix;
     }
 }

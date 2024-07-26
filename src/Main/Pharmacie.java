@@ -19,8 +19,8 @@ public class Pharmacie {
         HashMap<String, Medicament> medicaments = new HashMap<>();
     }
 
-    static void  insertData(Connection conn) {
-        //fonction pour insérer les données dans la base de données
+    static void insertData(Connection conn) {
+        // Fonction pour insérer les données dans la base de données
         Scanner scanner = new Scanner(System.in);
         System.out.print("Entrez l'ID du médicament: ");
         String id = scanner.next();
@@ -28,23 +28,27 @@ public class Pharmacie {
         String nom = scanner.next();
         System.out.print("Entrez le type du médicament: ");
         String type = scanner.next();
-        System.out.println(" EntreZ le Prix  du medicament :");
-        String Prix = scanner.next();
-        Medicament medicament = new Medicament(id, nom, type);
+        System.out.print("Entrez le prix du médicament: ");
+        String prix = scanner.next();
+
+        Medicament medicament = new Medicament(id, nom, type, prix);
+
         try {
-            String query = "INSERT INTO medicament (id, nom, type_m) VALUES (?, ?, ?)";
+            String query = "INSERT INTO medicament (id, nom, type_m, prix) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, medicament.getId());
             preparedStatement.setString(2, medicament.getNom());
             preparedStatement.setString(3, medicament.getType());
-            //preparedStatement.setString(4,medicament.get );
+            preparedStatement.setString(4, medicament.getPrix());
+
             preparedStatement.executeUpdate();
             System.out.println("Médicament ajouté avec succès");
         } catch (SQLException e) {
-            System.out.println("An error occurred. Maybe user/password is invalid");
+            System.out.println("Une erreur s'est produite. Peut-être que l'utilisateur/le mot de passe est invalide");
             e.printStackTrace();
         }
     }
+
     public static void displayData(Connection conn) {
         //fonction pour afficher les données de la base de données
         try {
